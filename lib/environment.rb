@@ -1,8 +1,9 @@
-require 'anime_list/version'
+require_relative './anime_list/version'
 require 'pry'
 require 'uri'
 require 'net/http'
 require 'openssl'
+require 'json'
 # require "httparty"
 
 require_relative './ApiManager'

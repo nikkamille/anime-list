@@ -1,3 +1,5 @@
 #!/usr/bin/env ruby
 
-puts "Hi, Kuku!"
+require_relative '../lib/environment'
+
+AnimeList::APIManager.new.get_page
