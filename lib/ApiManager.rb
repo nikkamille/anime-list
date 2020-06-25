@@ -2,7 +2,7 @@ class AnimeList::APIManager
 
   def get_page
   
-    url = URI("https://jikan1.p.rapidapi.com/anime/16498/episodes")
+    url = URI("https://jikan1.p.rapidapi.com/top/anime/1/upcoming")
 
     http = Net::HTTP.new(url.host, url.port)
     http.use_ssl = true
@@ -16,6 +16,7 @@ class AnimeList::APIManager
     result = response.read_body
     parsed = JSON.parse(result)
     binding.pry
+
   end
 
 
