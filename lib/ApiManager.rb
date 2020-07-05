@@ -26,6 +26,7 @@ class AnimeList::APIManager
 
     url = BASE_URL + "reports.xml?id=155&type=anime&nskip=0&nlist=all"
     response = HTTParty.get(url)
+    anime_hash = response["report"]
 
 
 
