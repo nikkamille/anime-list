@@ -6,7 +6,7 @@ require 'json'
 require 'httparty'
 
 require_relative './anime_list/version'
-require_relative './ApiManager'
+require_relative './api_manager'
 require_relative './anime'
 require_relative './cli'
 

@@ -6,5 +6,14 @@ class AnimeList::Anime
     @@all
   end
 
+  def initialize(name, type, date)
+    @name, @type, @date = name, type, date 
+    save
+  end
+
+  def save
+    @@all << self
+  end
+
 
 end
