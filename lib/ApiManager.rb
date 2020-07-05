@@ -1,6 +1,6 @@
 class AnimeList::APIManager
 
-  def get_page
+  def get_anime
   
     url = URI("https://jikan1.p.rapidapi.com/top/anime/1/upcoming")
 

@@ -2,4 +2,4 @@
 
 require_relative '../lib/environment'
 
-AnimeList::APIManager.new.get_page
+AnimeList::APIManager.new.get_anime
