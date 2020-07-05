@@ -24,9 +24,8 @@ class AnimeList::APIManager
   def self.get_anime
     puts "getting anime"
 
-    url = BASE_URL + "reports.xml?id=155&type=anime&nlist=all"
+    url = BASE_URL + "reports.xml?id=155&type=anime&nskip=0&nlist=all"
     response = HTTParty.get(url)
-    parsed = JSON.parse(response)
 
 
 
