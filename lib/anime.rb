@@ -15,5 +15,12 @@ class AnimeList::Anime
     @@all << self
   end
 
+  def self.create_all_from_api(anime_array)
+    anime_array.each do |anime|
+      self.new(anime["name"], anime["type"], anime["vintage"])
+    end
+  end
+
+
 
 end
