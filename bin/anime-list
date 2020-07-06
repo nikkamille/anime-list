@@ -2,5 +2,6 @@
 
 require_relative '../lib/environment'
 
-AnimeList::APIManager.get_anime
+AnimeList::CLI.new.start
+
 binding.pry
