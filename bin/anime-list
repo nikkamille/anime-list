@@ -2,6 +2,7 @@
 
 require_relative '../lib/environment'
 
+
 AnimeList::CLI.new.start
 
-binding.pry
+# binding.pry

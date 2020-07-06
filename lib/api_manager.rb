@@ -22,18 +22,22 @@ class AnimeList::APIManager
   BASE_URL = "https://cdn.animenewsnetwork.com/encyclopedia/"
 
   def self.get_anime
-    puts "getting anime"
+    puts "Preparing the animes...\n\n"
 
     url = BASE_URL + "reports.xml?id=155&type=anime&nskip=0&nlist=all"
     response = HTTParty.get(url)
     anime_hash = response["report"]
     anime_array = anime_hash["item"]
-
+  
     AnimeList::Anime.create_all_from_api(anime_array)
-
-
-
   end
+
+  # def self.get_anime_info(anime)
+  #   # url = BASE_URL + "api.xml?anime=#{anime.id}"
+  #   # response = HTTParty.get(url)
+  #   get_anime
+    
+  # end
 
 
 end
