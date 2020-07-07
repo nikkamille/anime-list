@@ -45,7 +45,10 @@ class AnimeList::CLI
   end
 
   def search_anime
-    puts "Searching..."
+    puts "Type the title of the anime you're searching:"
+    search_input = gets.strip.downcase
+    result = AnimeList::Anime.all.detect { |anime| search_input == anime.title }
+    puts result
   end
 
   def random_anime
@@ -56,9 +59,9 @@ class AnimeList::CLI
     puts "\nSayōnara!\n\n"
   end
 
-
-  def display_anime_info
-    puts "this will show details about the anime"
+  def display_anime_info(index)
+    anime_object = AnimeList::Anime.all[index]
+    AnimeList::APIManager.get_anime_info(anime_object)
   end
 
 

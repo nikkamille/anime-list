@@ -23,6 +23,14 @@ class AnimeList::Anime
     end
   end
 
+  # def anime_info
+  #   <<-INFO
+
+
+
+
+  #   INFO
+  # end
 
 
 
