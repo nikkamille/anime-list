@@ -32,12 +32,12 @@ class AnimeList::APIManager
     AnimeList::Anime.create_all_from_api(anime_array)
   end
 
-  # def self.get_anime_info(anime)
-  #   # url = BASE_URL + "api.xml?anime=#{anime.id}"
-  #   # response = HTTParty.get(url)
-  #   get_anime
+  def self.get_anime_info(anime_id)
+    url = BASE_URL + "api.xml?anime=#{anime_id}"
+    response = HTTParty.get(url)
+    puts response
     
-  # end
+  end
 
 
 end

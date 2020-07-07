@@ -20,17 +20,17 @@ class AnimeList::CLI
 
   def menu
     loop do
-      puts "\n\nWhat do you want to do?\n\n"
+      puts "\nWhat do you want to do?\n\n"
       sleep(0.2)
-      puts "Type 'search' or 'random' or 'exit':\n\n"
-      input = user_input
+      puts "Type 'search' or 'random' or 'exit':"
+      input = menu_input
     end
   end
     
-  def user_input
-    user_input = gets.strip.downcase
+  def menu_input
+    menu_input = gets.strip.downcase
 
-    case user_input
+    case menu_input
     when "search"
       search_anime
     when "random"
@@ -45,13 +45,31 @@ class AnimeList::CLI
   end
 
   def search_anime
-    puts "Type only ONE word from the title of the anime you're searching:"
-    search_input = gets.strip.capitalize
-    result = AnimeList::Anime.all.select { |anime| anime.title.match(search_input) }
+    search_title_input
+    search_id_input
+  end
+
+  def search_title_input
+    puts "\nType only ONE word from the title of the anime you're searching:"
+    search_title_input = gets.strip.capitalize
+    result = AnimeList::Anime.all.select { |anime| anime.title.match(search_title_input) }
     result.each do |anime|
       puts "#{anime.id}: #{anime.title}"
-     end
+    end
   end
+
+  def search_id_input
+    puts "Type the ID number of the anime you want to learn more about or type 'menu' to go back to the main menu:" 
+    search_id_input = gets.strip.downcase 
+    if search_id_input == "menu"
+      menu
+    else
+      AnimeList::APIManager.get_anime_info(search_id_input) # Gets all the details about the anime
+      display_anime_info 
+    end
+  end
+
+
 
   def random_anime
     puts "random anime"
@@ -61,9 +79,10 @@ class AnimeList::CLI
     puts "\nSayōnara!\n\n"
   end
 
-  def display_anime_info(index)
-    anime_object = AnimeList::Anime.all[index]
-    AnimeList::APIManager.get_anime_info(anime_object)
+  def display_anime_info #(index)
+    puts "displays anime info"
+    # anime_object = AnimeList::Anime.all[index]
+    # AnimeList::APIManager.get_anime_info(anime_object)
   end
 
 
