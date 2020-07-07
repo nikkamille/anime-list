@@ -45,10 +45,12 @@ class AnimeList::CLI
   end
 
   def search_anime
-    puts "Type the title of the anime you're searching:"
-    search_input = gets.strip.downcase
-    result = AnimeList::Anime.all.detect { |anime| search_input == anime.title }
-    puts result
+    puts "Type only ONE word from the title of the anime you're searching:"
+    search_input = gets.strip.capitalize
+    result = AnimeList::Anime.all.select { |anime| anime.title.match(search_input) }
+    result.each do |anime|
+      puts "#{anime.id}: #{anime.title}"
+     end
   end
 
   def random_anime
