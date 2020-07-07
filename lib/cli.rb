@@ -8,9 +8,9 @@ class AnimeList::CLI
 
   def greeting
     puts "\n\n\nKon'nichiwa! n_n\n\n\n"
-    sleep(0.2)
+    sleep(1)
     puts "Welcome to my Anime List!\n\n\n"
-    sleep(0.2)
+    sleep(1)
     puts "You can search for a specific anime or learn about a random anime.\n\n\n"
   end
 
@@ -21,7 +21,7 @@ class AnimeList::CLI
   def menu
     loop do
       puts "\nWhat do you want to do?\n\n"
-      sleep(0.2)
+      sleep(0.5)
       puts "Type 'search' or 'random' or 'exit':"
       input = menu_input
     end
@@ -52,9 +52,14 @@ class AnimeList::CLI
   def search_title_input
     puts "\nType only ONE word from the title of the anime you're searching:"
     search_title_input = gets.strip.capitalize
-    result = AnimeList::Anime.all.select { |anime| anime.title.match(search_title_input) }
-    result.each do |anime|
-      puts "#{anime.id}: #{anime.title}"
+    if search_title_input.split(" ").size == 1
+      result = AnimeList::Anime.all.select { |anime| anime.title.match(search_title_input) }
+      result.each do |anime|
+        puts "#{anime.id}: #{anime.title}"
+      end
+    else
+      puts "I don't know that anime. Please do another search:"
+      search_anime
     end
   end
 
