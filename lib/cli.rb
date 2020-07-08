@@ -11,7 +11,7 @@ class AnimeList::CLI
     sleep(1)
     puts "Welcome to my Anime List!\n\n\n"
     sleep(1)
-    puts "You can search for a specific anime or learn about a random anime.\n\n\n"
+    puts "Search for any anime from the thousands of anime shows and movies!\n\n\n"
   end
 
   def get_anime_list
@@ -20,9 +20,9 @@ class AnimeList::CLI
 
   def menu
     loop do
-      puts "\nWhat do you want to do?\n\n"
+      puts "\nWhat do you want to do?\n\n\n"
       sleep(0.5)
-      puts "Type 'search' or 'random' or 'exit':"
+      puts "Type 'search' to search for an anime or 'exit' to close the program:"
       input = menu_input
     end
   end
@@ -33,8 +33,6 @@ class AnimeList::CLI
     case menu_input
     when "search"
       search_anime
-    when "random"
-      random_anime
     when "exit"
       sayonara
       exit # exits the program
@@ -51,7 +49,7 @@ class AnimeList::CLI
   end
 
   def search_title_input
-    puts "\nType only ONE word from the title of the anime you're searching:"
+    puts "\n\nType only ONE word from the title of the anime you're searching:"
     search_title_input = gets.strip.capitalize
     if search_title_input.split(" ").size == 1
       result = AnimeList::Anime.all.select { |anime| anime.title.match(search_title_input) }
@@ -68,13 +66,12 @@ class AnimeList::CLI
   end
 
   def search_id_input
-    puts "Type the ID number of the anime you want to learn more about or type 'menu' to go back to the main menu:" 
+    puts "\n\nType the ID number of the anime you want to learn more about or type 'menu' to go back to the main menu:" 
     search_id_input = gets.strip.downcase 
     if search_id_input == "menu"
       menu
     else
-      AnimeList::APIManager.get_anime_info(search_id_input) # Gets all the details about the anime
-      display_anime_info 
+      AnimeList::APIManager.get_anime_info(search_id_input) # Gets all the details about the anime 
     end
   end
 
@@ -83,21 +80,8 @@ class AnimeList::CLI
     search_anime
   end
 
-
-
-  def random_anime
-    puts "random anime"
-  end
-
   def sayonara
     puts "\nSayōnara!\n\n"
   end
-
-  def display_anime_info #(index)
-    puts "displays anime info"
-    # anime_object = AnimeList::Anime.all[index]
-    # AnimeList::APIManager.get_anime_info(anime_object)
-  end
-
 
 end

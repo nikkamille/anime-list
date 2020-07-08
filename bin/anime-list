@@ -4,6 +4,6 @@ require_relative '../lib/environment'
 
 
 AnimeList::CLI.new.start
-#AnimeList::APIManager.get_anime_info("412")
+# AnimeList::APIManager.get_anime
 
-#binding.pry
+binding.pry

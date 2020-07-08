@@ -1,6 +1,6 @@
 class AnimeList::Anime 
 
-  attr_accessor :id, :title, :type, :date
+  attr_accessor :id, :title, :type, :date, :genre, :num_of_episodes, :plot_summary
   
   @@all = []
 
@@ -23,15 +23,26 @@ class AnimeList::Anime
     end
   end
 
-  # def anime_info
-  #   <<-INFO
+  def anime_info
+    <<-INFO
 
+TITLE: #{self.title}
 
+ANIME ID: #{self.id}
 
+TYPE: #{self.type}          
 
-  #   INFO
-  # end
+DATE: #{self.date}
 
+NUMBER OF EPISODES: #{self.num_of_episodes.join}
 
+GENRE: #{self.genre.join(', ')}
+
+PLOT SUMMARY:
+#{self.plot_summary.join}               
+
+    INFO
+    
+  end
 
 end

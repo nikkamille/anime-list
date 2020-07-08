@@ -18,11 +18,13 @@ class AnimeList::APIManager
   #   binding.pry
 
   # end
+  
+  attr_accessor :genre, :num_of_episodes, :plot_summary
 
   BASE_URL = "https://cdn.animenewsnetwork.com/encyclopedia/"
 
   def self.get_anime
-    puts "Preparing the animes...\n\n"
+    puts "GETTING MY ANIME LIST...\n\n"
 
     url = BASE_URL + "reports.xml?id=155&type=anime&nskip=0&nlist=all"
     response = HTTParty.get(url)
@@ -34,32 +36,38 @@ class AnimeList::APIManager
   end
 
   def self.get_anime_info(anime_id)
+    puts "GETTING INFORMATION...\n\n"
+    
+    anime_object = AnimeList::Anime.all.detect { |anime| anime.id == "#{anime_id}"}
+
     url = BASE_URL + "api.xml?anime=#{anime_id}"
     response = HTTParty.get(url)
     
     anime_info_array = response["ann"]["anime"]["info"]
+    # puts anime_info_array
     
-    anime_genre = anime_info_array.map do |hash|
+    anime_object.genre = anime_info_array.map do |hash|
       if hash["type"] == "Genres"
         hash["__content__"]
       end
     end
-    anime_genre.compact!
+    anime_object.genre.compact!
 
-    anime_num_of_episodes = anime_info_array.map do |hash|
+    anime_object.num_of_episodes = anime_info_array.map do |hash|
       if hash["type"] == "Number of episodes"
         hash["__content__"]
       end
     end
-    anime_num_of_episodes.compact!
+    anime_object.num_of_episodes.compact!
 
-    anime_plot_summary = anime_info_array.map do |hash|
+    anime_object.plot_summary = anime_info_array.map do |hash|
       if hash["type"] == "Plot Summary"
         hash["__content__"]
       end
     end
-    anime_plot_summary.compact!
-      
+    anime_object.plot_summary.compact!
+    puts anime_object.anime_info
+    sleep(5)
   end
-  binding.pry 
+   
 end
