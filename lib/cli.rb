@@ -47,6 +47,7 @@ class AnimeList::CLI
   def search_anime
     search_title_input
     search_id_input
+    menu
   end
 
   def search_title_input
@@ -54,12 +55,15 @@ class AnimeList::CLI
     search_title_input = gets.strip.capitalize
     if search_title_input.split(" ").size == 1
       result = AnimeList::Anime.all.select { |anime| anime.title.match(search_title_input) }
-      result.each do |anime|
-        puts "#{anime.id}: #{anime.title}"
+      if result.count == 0
+        no_result
+      else
+        result.each do |anime|
+          puts "#{anime.id}: #{anime.title}"
+        end
       end
     else
-      puts "I don't know that anime. Please do another search:"
-      search_anime
+      no_result
     end
   end
 
@@ -72,6 +76,11 @@ class AnimeList::CLI
       AnimeList::APIManager.get_anime_info(search_id_input) # Gets all the details about the anime
       display_anime_info 
     end
+  end
+
+  def no_result
+    puts "I don't know that anime. Please do another search:"
+    search_anime
   end
 
 
