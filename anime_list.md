@@ -9,12 +9,12 @@ File Structure
 > bin
   - console
   - setup
-  - run
-> config
-  - environment.rb
+  - anime-list
 > lib
   > anime_list
-    - apimanager.rb
-    - anime.rb
-    - cli.rb
-  - anime_list.rb
+    - version.rb
+  - environment.rb
+  - apimanager.rb
+  - anime.rb
+  - cli.rb
+  

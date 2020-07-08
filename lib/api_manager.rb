@@ -26,8 +26,9 @@ class AnimeList::APIManager
 
     url = BASE_URL + "reports.xml?id=155&type=anime&nskip=0&nlist=all"
     response = HTTParty.get(url)
-    anime_hash = response["report"]
-    anime_array = anime_hash["item"]
+    anime_array = response["report"]["item"]
+    # anime_hash = response["report"]
+    # anime_array = anime_hash["item"]
   
     AnimeList::Anime.create_all_from_api(anime_array)
   end
@@ -35,9 +36,30 @@ class AnimeList::APIManager
   def self.get_anime_info(anime_id)
     url = BASE_URL + "api.xml?anime=#{anime_id}"
     response = HTTParty.get(url)
-    puts response
     
+    anime_info_array = response["ann"]["anime"]["info"]
+    
+    anime_genre = anime_info_array.map do |hash|
+      if hash["type"] == "Genres"
+        hash["__content__"]
+      end
+    end
+    anime_genre.compact!
+
+    anime_num_of_episodes = anime_info_array.map do |hash|
+      if hash["type"] == "Number of episodes"
+        hash["__content__"]
+      end
+    end
+    anime_num_of_episodes.compact!
+
+    anime_plot_summary = anime_info_array.map do |hash|
+      if hash["type"] == "Plot Summary"
+        hash["__content__"]
+      end
+    end
+    anime_plot_summary.compact!
+      
   end
-
-
+  binding.pry 
 end

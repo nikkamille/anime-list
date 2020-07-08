@@ -1,6 +1,6 @@
 class AnimeList::Anime 
 
-  attr_accessor :title, :id, :type, :date
+  attr_accessor :id, :title, :type, :date
   
   @@all = []
 
@@ -8,8 +8,8 @@ class AnimeList::Anime
     @@all
   end
 
-  def initialize(title, id) 
-    @title, @id = title, id
+  def initialize(id, title, type, date) 
+    @id, @title, @type, @date = id, title, type, date
     save
   end
 
@@ -19,7 +19,7 @@ class AnimeList::Anime
 
   def self.create_all_from_api(anime_array)
     anime_array.each do |anime|
-      self.new(anime["name"], anime["id"]) #, anime["type"], anime["vintage"])
+      self.new(anime["id"], anime["name"], anime["type"], anime["vintage"])
     end
   end
 
