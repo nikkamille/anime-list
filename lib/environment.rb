@@ -1,7 +1,4 @@
 require 'pry'
-require 'uri'
-require 'net/http'
-require 'openssl'
 require 'json'
 require 'httparty'
 

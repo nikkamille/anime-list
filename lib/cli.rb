@@ -81,7 +81,7 @@ class AnimeList::CLI
   end
 
   def sayonara
-    puts "\nSayōnara!\n\n"
+    puts "\nSayōnara! See you next time!\n\n"
   end
 
 end
