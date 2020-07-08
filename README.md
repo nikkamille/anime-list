@@ -1,8 +1,6 @@
 # AnimeList
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/anime_list`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Welcome to my Anime List CLI! You can search for any anime shows or movies to get more information. I hope you enjoy using my CLI application. :)
 
 ## Installation
 
@@ -22,7 +20,10 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+1. Type in the command that you want to do. You can type 'search' to search for a specific anime or 'exit' to close the program.
+2. When you type 'search', the application will ask you to type ONE word from the anime title that you want to search. You can only one word.
+3. The CLI application will show you a list of all animes with that word. Choose from the list and type the Anime ID number to learn more about a specific anime.
+4. The application will go back to the main menu. You can search again or exit the program.
 
 ## Development
 
@@ -32,7 +33,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/anime_list. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/[USERNAME]/anime_list/blob/master/CODE_OF_CONDUCT.md).
+Bug reports and pull requests are welcome on GitHub at https://github.com/nikkamille/anime_list. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/[USERNAME]/anime_list/blob/master/CODE_OF_CONDUCT.md).
 
 
 ## License
