@@ -45,4 +45,10 @@ PLOT SUMMARY:
     
   end
 
+  def self.all_anime
+    all.map do |anime|
+      "#{anime.id}: #{anime.title}"
+    end
+  end
+
 end
